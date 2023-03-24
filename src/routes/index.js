@@ -10,38 +10,53 @@ import LoadingScreen from "../components/LoadingScreen";
 import MainLayout from "../layouts/main";
 
 const Loadable = (Component) => (props) => {
-    return (
-        <Suspense fallback={<LoadingScreen />}>
-            <Component {...props} />
-        </Suspense>
-    );
+  return (
+    <Suspense fallback={<LoadingScreen />}>
+      <Component {...props} />
+    </Suspense>
+  );
 };
 
 export default function Router() {
-    return useRoutes([
-        {
-            path: "/auth",
-            element: <MainLayout />,
-            children: [{ element: <LoginPage />, path: "login" }],
-        },
-        {
-            path: "/",
-            element: <DashboardLayout />,
-            children: [
-                { element: <Navigate to={DEFAULT_PATH} replace />, index: true },
-                { path: "app", element: <GeneralApp /> },
-                { path: "settings", element: <Settings /> },
+  return useRoutes([
+    {
+      path: "/auth",
+      element: <MainLayout />,
+      children: [
+        { element: <LoginPage />, path: "login" },
+        { element: <RegisterPage />, path: "register" },
+        { element: <ResetPasswordPage />, path: "reset-password" },
+        { element: <NewPasswordPage />, path: "new-password" },
+      ],
+    },
+    {
+      path: "/",
+      element: <DashboardLayout />,
+      children: [
+        { element: <Navigate to={DEFAULT_PATH} replace />, index: true },
+        { path: "app", element: <GeneralApp /> },
+        { path: "settings", element: <Settings /> },
 
-                { path: "404", element: <Page404 /> },
-                { path: "*", element: <Navigate to="/404" replace /> },
-            ],
-        },
+        { path: "404", element: <Page404 /> },
         { path: "*", element: <Navigate to="/404" replace /> },
-    ]);
+      ],
+    },
+    { path: "*", element: <Navigate to="/404" replace /> },
+  ]);
 }
 
-const GeneralApp = Loadable(lazy(() => import("../pages/dashboard/GeneralApp")));
+const GeneralApp = Loadable(
+  lazy(() => import("../pages/dashboard/GeneralApp"))
+);
 const LoginPage = Loadable(lazy(() => import("../pages/auth/Login")));
+const RegisterPage = Loadable(lazy(() => import("../pages/auth/Register")));
+const NewPasswordPage = Loadable(
+  lazy(() => import("../pages/auth/NewPassword"))
+);
+
+const ResetPasswordPage = Loadable(
+  lazy(() => import("../pages/auth/ResetPassword"))
+);
 
 const Settings = Loadable(lazy(() => import("../pages/dashboard/Settings")));
 
