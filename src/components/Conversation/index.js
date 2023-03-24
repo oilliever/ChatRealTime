@@ -12,11 +12,8 @@ const Conversation = () => {
             <Header />
 
             {/*Msg */}
-            <Box
-                width={"100%"}
-                sx={{ flexGrow: 1, height: "100%", overflow: "scroll" }}
-            >
-                <Message />
+            <Box width={"100%"} sx={{ flexGrow: 1, height: "100%", overflow: "scroll" }}>
+                <Message menu={true} />
             </Box>
             {/*Chat footer */}
             <Footer />
