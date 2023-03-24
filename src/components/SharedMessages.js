@@ -4,7 +4,7 @@ import { useTheme } from "@mui/material/styles";
 import { CaretLeft } from "phosphor-react";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { SHARRED_DOCS, SHARRED_LINKS } from "../data";
+import { SHARED_DOCS, SHARED_LINKS } from "../data";
 import { UpdateSidebarType } from "../redux/slices/app";
 import { DocMsg, LinkMsg } from "./Conversation/MsgTypes";
 
@@ -75,10 +75,10 @@ const SharedMessages = () => {
                                 );
                             case 1:
                                 //Links
-                                return SHARRED_LINKS.map((el) => <LinkMsg el={el} />);
+                                return SHARED_LINKS.map((el) => <LinkMsg el={el} />);
                             case 2:
                                 //Docs
-                                return SHARRED_DOCS.map((el) => <DocMsg el={el} />);
+                                return SHARED_DOCS.map((el) => <DocMsg el={el} />);
 
                             default:
                                 break;
