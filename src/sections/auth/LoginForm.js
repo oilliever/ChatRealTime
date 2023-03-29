@@ -7,14 +7,15 @@ import FormProvider from "../../components/hook-form/FormProvider";
 import { Alert, Button, IconButton, InputAdornment, Link, Stack } from "@mui/material";
 import { RHFTextField } from "../../components/hook-form";
 import { Eye, EyeSlash } from "phosphor-react";
+import { LoginUser } from "../../redux/slices/auth";
+import { useDispatch } from "react-redux";
 
 const LoginForm = () => {
+    const dispatch = useDispatch();
     const [showPassword, setShowPassword] = useState(false);
 
     const LoginSchema = Yup.object().shape({
-        email: Yup.string()
-            .required("Email is required")
-            .email("Email must be a valid email address"),
+        email: Yup.string().required("Email is required").email("Email must be a valid email address"),
         password: Yup.string().required("Password is required"),
     });
 
@@ -38,6 +39,7 @@ const LoginForm = () => {
     const onSubmit = async (data) => {
         try {
             //submit date to backend
+            dispatch(LoginUser(data));
         } catch (error) {
             console.log(error);
             reset();
@@ -46,11 +48,7 @@ const LoginForm = () => {
     };
     return (
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-            <Stack spacing={3}>
-                {!!errors.afterSubmit && (
-                    <Alert severity="error">{errors.afterSubmit.message}</Alert>
-                )}
-            </Stack>
+            <Stack spacing={3}>{!!errors.afterSubmit && <Alert severity="error">{errors.afterSubmit.message}</Alert>}</Stack>
             <Stack spacing={3}>
                 <RHFTextField name="email" label="Email address" />
                 <RHFTextField
@@ -63,7 +61,8 @@ const LoginForm = () => {
                                 <IconButton
                                     onClick={() => {
                                         setShowPassword(!showPassword);
-                                    }}>
+                                    }}
+                                >
                                     {showPassword ? <Eye /> : <EyeSlash />}
                                 </IconButton>
                             </InputAdornment>
@@ -72,12 +71,7 @@ const LoginForm = () => {
                 />
             </Stack>
             <Stack alignItems={"flex-end"} sx={{ my: 2 }}>
-                <Link
-                    component={RouterLink}
-                    to="/auth/reset-password"
-                    variant="body2"
-                    color={"inherit"}
-                    underline="always">
+                <Link component={RouterLink} to="/auth/reset-password" variant="body2" color={"inherit"} underline="always">
                     Forgot Password
                 </Link>
             </Stack>
@@ -89,14 +83,13 @@ const LoginForm = () => {
                 variant="contained"
                 sx={{
                     bgcolor: "text.primary",
-                    color: (theme) =>
-                        theme.palette.mode === "light" ? "common.white" : "grey.800",
+                    color: (theme) => (theme.palette.mode === "light" ? "common.white" : "grey.800"),
                     "&:hover": {
                         bgcolor: "text.primary",
-                        color: (theme) =>
-                            theme.palette.mode === "light" ? "common.white" : "grey.800",
+                        color: (theme) => (theme.palette.mode === "light" ? "common.white" : "grey.800"),
                     },
-                }}>
+                }}
+            >
                 Login
             </Button>
         </FormProvider>
