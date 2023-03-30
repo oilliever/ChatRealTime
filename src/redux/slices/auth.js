@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "../../utils/axios";
+import { showSnackbar } from "./app";
 
 // ----------------------------------------------------------------------
 
@@ -57,9 +58,11 @@ export function LoginUser(formValues) {
             .then(function (response) {
                 console.log(response);
                 dispatch(slice.actions.logIn({ isLoggedIn: true, token: response.data.token }));
+                dispatch(showSnackbar({ severity: "success", message: response.data.message }));
             })
             .catch(function (error) {
                 console.log(error);
+                dispatch(showSnackbar({ severity: "error", message: error.message }));
             });
     };
 }
