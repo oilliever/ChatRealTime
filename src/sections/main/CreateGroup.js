@@ -56,12 +56,7 @@ const CreateGroupForm = ({ handleClose }) => {
                     ChipProps={{ size: "medium" }}
                 />
             </Stack>
-            <Stack
-                paddingTop={5}
-                spacing={2}
-                direction="row"
-                alignItems={"center"}
-                justifyContent="end">
+            <Stack paddingTop={5} spacing={2} direction="row" alignItems={"center"} justifyContent="end">
                 <Button onClick={handleClose}>Cancel</Button>
                 <Button type="submit" variant="contained">
                     Create

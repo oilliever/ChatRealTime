@@ -3,7 +3,7 @@ import React from "react";
 
 import Header from "../../components/Conversation/Header";
 import Footer from "../../components/Conversation/Footer";
-import Message from "./Message";
+import Conversations from "../../pages/dashboard/Conversation";
 
 const Conversation = () => {
     return (
@@ -13,7 +13,7 @@ const Conversation = () => {
 
             {/*Msg */}
             <Box width={"100%"} sx={{ flexGrow: 1, height: "100%", overflow: "scroll" }}>
-                <Message menu={true} />
+                <Conversations menu={true} />
             </Box>
             {/*Chat footer */}
             <Footer />

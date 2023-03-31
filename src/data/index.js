@@ -231,7 +231,7 @@ const ChatList = [
 const Chat_History = [
     {
         type: "msg",
-        message: "Hi 👋🏻, How are ya ?",
+        message: "Hi 👋🏻, How are yahhh ?",
         incoming: true,
         outgoing: false,
     },
@@ -429,14 +429,4 @@ const SHARED_LINKS = [
     },
 ];
 
-export {
-    Profile_Menu,
-    Nav_Setting,
-    Nav_Buttons,
-    ChatList,
-    Chat_History,
-    Message_options,
-    SHARED_LINKS,
-    SHARED_DOCS,
-    CallLogs,
-};
+export { Profile_Menu, Nav_Setting, Nav_Buttons, ChatList, Chat_History, Message_options, SHARED_LINKS, SHARED_DOCS, CallLogs };

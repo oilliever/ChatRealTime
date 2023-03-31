@@ -1,5 +1,4 @@
-import { Box } from "@mui/material";
-import { Stack } from "@mui/system";
+import { Stack, Box } from "@mui/material";
 import React from "react";
 import { Chat_History } from "../../data";
 import { Timeline, TextMsg, MediaMsg, ReplyMsg, LinkMsg, DocMsg } from "./MsgTypes";
@@ -25,7 +24,6 @@ const Message = ({ menu }) => {
                                 default:
                                     return <TextMsg el={el} menu={menu} />;
                             }
-                            break;
                         default:
                             return <></>;
                     }

@@ -19,17 +19,15 @@ const StartCall = ({ open, handleClose }) => {
             keepMounted
             onClose={handleClose}
             aria-describedby="alert-dialog-slide-description"
-            sx={{ p: 4 }}>
+            sx={{ p: 4 }}
+        >
             <DialogTitle>{"Start New Conversation"}</DialogTitle>
             <Stack p={2} sx={{ width: "100%" }}>
                 <Search>
                     <SearchIconWrapper>
                         <MagnifyingGlass color="#709CE6" />
                     </SearchIconWrapper>
-                    <StyledInputBase
-                        placeholder="Search…"
-                        inputProps={{ "aria-label": "search" }}
-                    />
+                    <StyledInputBase placeholder="Search…" inputProps={{ "aria-label": "search" }} />
                 </Search>
             </Stack>
             <DialogContent>
