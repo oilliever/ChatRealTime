@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link as RouterLink, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -35,7 +35,7 @@ const NewPasswordForm = () => {
         reset,
         setError,
         handleSubmit,
-        formState: { errors, isSubmitting, isSubmitSuccessful },
+        formState: { errors },
     } = methods;
     const onSubmit = async (data) => {
         try {

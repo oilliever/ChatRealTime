@@ -63,11 +63,7 @@ const ProfileForm = () => {
     return (
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={4}>
-                <RHFTextField
-                    helperText={"This name is visible to your contacts"}
-                    name="name"
-                    label="Full Name"
-                />
+                <RHFTextField helperText={"This name is visible to your contacts"} name="name" label="Full Name" />
                 <RHFTextField multiline rows={4} maxRows={5} name="about" label="About" />
 
                 <Stack direction={"row"} justifyContent="end">
@@ -76,7 +72,8 @@ const ProfileForm = () => {
                         size="large"
                         type="submit"
                         variant="contained"
-                        loading={isSubmitSuccessful || isSubmitting}>
+                        loading={isSubmitSuccessful || isSubmitting}
+                    >
                         Save
                     </LoadingButton>
                 </Stack>
